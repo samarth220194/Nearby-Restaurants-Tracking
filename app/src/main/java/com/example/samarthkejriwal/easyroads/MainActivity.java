@@ -222,12 +222,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                             break;
                         case "ZERO_RESULTS":
                             Toast.makeText(getApplicationContext(), "No matches found near you", Toast.LENGTH_SHORT).show();
+                            progress.setVisibility(View.GONE);
                             break;
                         case "OVER_QUERY_LIMIT":
                             Toast.makeText(getApplicationContext(), "You have reached the Daily Quota of Requests", Toast.LENGTH_SHORT).show();
+                            progress.setVisibility(View.GONE);
                             break;
                         default:
                             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                            progress.setVisibility(View.GONE);
                             break;
                     }
 
@@ -433,6 +436,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
                         fetchStores("restaurant");
 
+                    }
+                     else {
+                        progress.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(),"Error in fetching the location",Toast.LENGTH_SHORT).show();
                     }
                 }
             });
